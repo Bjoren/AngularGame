@@ -1,7 +1,61 @@
 /* app css stylesheet */
 
-.gameContainer{
-  height: 100vh;
-  width: 100vw;
+.gameContainer {
+  height: calc(100vh - 40px);
+  width: calc(100vw - 40px);
   background-color: #aa9555;
+
+  border-style: solid;
+  border-color: #77683c;
+  border-width: 20px;
+
+  overflow: hidden;
+}
+
+.leftSideBar {
+  height: 100%;
+  width: 200px;
+  position: static;
+
+  border-right-style: solid;
+  border-color: #77683c;
+  border-width: 10px;
+}
+
+.rightSideBar {
+  height: 100%;
+  width: 200px;
+  float:  right;
+
+  border-left-style: solid;
+  border-color: #77683c;
+  border-width: 10px;
+}
+
+.logContainer {
+  height: 100%;
+  background-color: #221e11;
+  
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.logText {
+  font-size: 14px;
+  color:  #003d66;
+  margin-bottom: 0px;
+}
+
+.alarm {
+  color:  #e62e00;
+}
+
+h3 {
+  margin-top: 4px;
+  margin: 0px;
+  padding-left: 4px;
+
+  border-bottom-style: solid;
+  border-color: #77683c;
+  border-width: 2px;
 }
