@@ -14,36 +14,50 @@
 
 .gameWindow {
   background-color: darkgray;
-  text-align: center;
   float: right;
 
   height: 100%;
   width: calc(100% - 420px);
 
-  overflow-x: auto;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .mapWrapper {
   background-color: red;
+  white-space: nowrap;
   display: inline-block;
 
-  border-top-style: solid;
+  /*border-top-style: solid;
   border-left-style: solid;
-  border-width: 1px;
+  border-width: 1px;*/
 
   text-align: left;
   font-size: 10px;
 }
 
+.rotate { transform: rotate(45deg); }
+
+.flatten { transform: scale(2, 1); }
+
 .mapRow {
-  float: top;
+  float: left;
+  white-space: nowrap;
+  border-width: 1px;
+}
+
+.firstRow {
+  border-top-style: solid;
+}
+
+.firstCell {
+  border-left-style: solid;
 }
 
 .mapCell {
   height: 45px;
   width: 45px;
-  float: left;
+  display: inline-block;
+  float: top;
 
   border-right-style: solid;
   border-bottom-style: solid;
