@@ -8,11 +8,24 @@ angular.module('GameEngine', [])
 		return logService.getLog();
 	}
 
+	$scope.addEntry = function(message, entryType) {
+		logService.addEntry(message, entryType);
+	}
+
 	//Map---------------------------------------------------
 
 	$scope.WORLD_MAP_SIZE = 24;
 
 	$scope.worldMap = new Array($scope.WORLD_MAP_SIZE).fill().map(()=> new Array($scope.WORLD_MAP_SIZE));
+
+	//Build-------------------------------------------------
+
+	$scope.selectedBuilding = undefined;
+
+	$scope.cellClick = function(x, y) {
+		console.log(x + ', ' + y);
+		$scope.addEntry(x + ', ' + y + ' clicked.', '');
+	}
 }])
 
 .service('logService', [function () {
