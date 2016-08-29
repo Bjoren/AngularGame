@@ -12,6 +12,45 @@
   overflow: hidden;
 }
 
+.gameWindow {
+  background-color: darkgray;
+  text-align: center;
+  float: right;
+
+  height: 100%;
+  width: calc(100% - 420px);
+
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.mapWrapper {
+  background-color: red;
+  display: inline-block;
+
+  border-top-style: solid;
+  border-left-style: solid;
+  border-width: 1px;
+
+  text-align: left;
+  font-size: 10px;
+}
+
+.mapRow {
+  float: top;
+}
+
+.mapCell {
+  height: 45px;
+  width: 45px;
+  float: left;
+
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-width: 1px;
+  background-color: grey;
+}
+
 .leftSideBar {
   height: 100%;
   width: 200px;
@@ -35,7 +74,7 @@
 .logContainer {
   height: 100%;
   background-color: #221e11;
-  
+
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -48,6 +87,10 @@
 
 .alarm {
   color:  #e62e00;
+}
+
+.alert {
+  color:  #ffff00;
 }
 
 h3 {

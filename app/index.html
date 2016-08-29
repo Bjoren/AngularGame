@@ -17,17 +17,28 @@
 
 <body>
   <div class="gameContainer" ng-controller="GameCtrl">
+
     <div class="rightSideBar">
       <h3>Log</h3>
       <div class="logContainer" id="logContainer">
         <p class="logText" ng-class="entry.type" ng-class="expression" ng-repeat="entry in getLog() track by $index">
-          - {{entry.message}}
+          &nbsp- {{entry.message}}
         </p>
       </div>
     </div>
 
+    <div class="gameWindow">
+      <div class="mapWrapper">
+        <div class="mapRow" ng-repeat="row in worldMap track by $index" ng-init="x_pos = $index">
+          <div class="mapCell" ng-repeat="cell in row track by $index" ng-init="y_pos = $index">
+            ({{x_pos}},{{y_pos}})
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="leftSideBar">
-      
+      Left sidebar
     </div>
   </div>
 
