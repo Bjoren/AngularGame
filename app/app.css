@@ -13,7 +13,7 @@
 }
 
 .gameWindow {
-  background-color: darkgray;
+  background-color: #111a00;
   float: right;
 
   height: 100%;
@@ -28,14 +28,17 @@
   position: relative;
   display: inline-block;
   margin-top: 30%;
-  margin-left: 50%;
+  margin-left: 100%;
+  overflow: visible;
 
+  height: 10px;
+  width: 10px;
   /*border-top-style: solid;
   border-left-style: solid;
   border-width: 1px;*/
 
   text-align: left;
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .rotate { transform: rotate(45deg); }
@@ -57,8 +60,8 @@
 }
 
 .mapCell {
-  height: 45px;
-  width: 45px;
+  height: 30px;
+  width: 30px;
   display: inline-block;
   float: top;
 
@@ -66,10 +69,12 @@
   border-bottom-style: solid;
   border-width: 1px;
   background-color: #88cc00;
+
+  text-align: center;
 }
 
 .grass {
-  background-color: #669900;
+  background-color: #77b300;
 }
 
 .hover {

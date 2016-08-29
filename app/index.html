@@ -31,7 +31,7 @@
       <div class="flatten">
         <div class="mapWrapper rotate">
           <div class="mapRow" ng-class="{'firstRow' : $first}" ng-repeat="row in worldMap track by $index" ng-init="x_pos = $index">
-            <div class="mapCell" ng-mouseenter="hover = true" ng-class="{'hover' : hover, 'firstCell' : $first, 'grass': cell}" ng-mouseleave="hover = false" ng-repeat="cell in row track by $index" ng-init="y_pos = $index">
+            <div class="mapCell" ng-mouseenter="hover = true" ng-class="{'hover' : hover, 'firstCell' : $first, 'grass': (x_pos + y_pos) % 2}" ng-mouseleave="hover = false" ng-repeat="cell in row track by $index" ng-init="y_pos = $index">
               ({{x_pos}},{{y_pos}})
             </div>
           </div>
