@@ -48,6 +48,21 @@
   }
 }
 
+.overlayButton {
+  text-align: center;
+  background-color: white;
+  position: fixed;
+  z-index: 2;
+  display: inline-block;
+  width: 25px;
+  margin-bottom: 5px;
+  height: 25px;
+}
+
+.overlayButton:active {
+  background-color: red;
+}
+
 .worldWindow {
   overflow: visible;
   display: inline-block;

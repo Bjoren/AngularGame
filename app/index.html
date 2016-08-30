@@ -33,6 +33,13 @@
     </div>
 
     <div class="viewPort" newMapSizeToJSON()>
+    <div class="overlayButton" ng-click="CELL_SIZE = CELL_SIZE + 10">
+      <label>+</label>
+    </div>
+    <div class="overlayButton" style="top: 45px" ng-click="CELL_SIZE = CELL_SIZE - 10">
+      <label>-</label>
+    </div>
+
       <div class="worldWindow" ng-style="newMapSizeToJSON()">
         <div class="flatten">
           <div class="mapWrapper rotate" ng-style="{'height' : getMapSize()+'px','width' : getMapSize()+'px', 'top' : determineMapPosition()+'px', 'left' : determineMapPosition()+'px'}"> 
