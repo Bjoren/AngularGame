@@ -17,28 +17,18 @@
 
 <body>
   <div class="guiContainer" ng-controller="GameCtrl">
-
-    <div class="rightSideBar">
-      <h3>Log</h3>
-      <div class="logContainer" id="logContainer">
-        <p class="logText" ng-class="entry.type" ng-class="expression" ng-repeat="entry in getLog() track by $index">
-          &nbsp- {{entry.message}}
-        </p>
-      </div>
-    </div>
-    
-    <div class="leftSideBar">
+    <!--<div class="leftSideBar">
       Left sidebar - {{selectedBuilding}}
       <p ng-click="selectedBuilding = 'house'">House</p>
-    </div>
+    </div>-->
 
     <div class="viewPort" newMapSizeToJSON()>
-    <div class="overlayButton" ng-click="CELL_SIZE = CELL_SIZE + 10">
-      <label>+</label>
-    </div>
-    <div class="overlayButton" style="top: 45px" ng-click="CELL_SIZE = CELL_SIZE - 10">
-      <label>-</label>
-    </div>
+      <div class="overlayButton" ng-click="CELL_SIZE = CELL_SIZE + 10">
+        <label>+</label>
+      </div>
+      <div class="overlayButton" style="top: 45px" ng-click="CELL_SIZE = CELL_SIZE - 10">
+        <label>-</label>
+      </div>
 
       <div class="worldWindow" ng-style="newMapSizeToJSON()">
         <div class="flatten">
@@ -53,6 +43,15 @@
         </div>
       </div>
     </div>
+
+    <!--<div class="rightSideBar">
+      <h3>Log</h3>
+      <div class="logContainer" id="logContainer">
+        <p class="logText" ng-class="entry.type" ng-class="expression" ng-repeat="entry in getLog() track by $index">
+          &nbsp- {{entry.message}}
+        </p>
+      </div>
+    </div>-->
   </div>
 
   <script src="bower_components/angular/angular.js"></script>
