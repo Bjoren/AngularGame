@@ -7,7 +7,7 @@
 
   border-style: solid;
   border-color: #77683c;
-  border-width: 20px;
+  border-width: 15px;
 
   overflow: hidden;
 }
@@ -16,23 +16,69 @@
 
 .viewPort {
   overflow: auto;
-  float: leftba;
+  float: left;
+  position: absolute;
+  left: 220px;
   display: inline-block;
-  height: 100%;
-  width: 100%;
-  background-color: #4da6ff;
+  height: calc(100vh - 30px);
+  width: calc(100vw - 470px);
+  background: -webkit-radial-gradient(50% 50%, farthest-side, #e6f7ff, #538cc6); /* Safari 5.1 to 6.0 */
+  /*background: -o-radial-gradient(red, yellow, green); /* For Opera 11.6 to 12.0 */
+  /*background: -moz-radial-gradient(red, yellow, green); /* For Firefox 3.6 to 15 */
+  /*background: radial-gradient(red, yellow, green); /* Standard syntax */
+  background-color: #89bff5;
+
+  -webkit-animation-name: dayNightCycle;
+  -webkit-animation-duration: 20s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes dayNightCycle {
+  0% {
+    filter: brightness(100%);
+    -webkit-filter: brightness(100%);
+  }
+  50%{
+    filter: brightness(40%);
+    -webkit-filter: brightness(40%);
+  }
+  100% {
+    filter: brightness(100%);
+    -webkit-filter: brightness(100%);
+  }
 }
 
 .worldWindow {
-  overflow: hidden;
+  overflow: visible;
   display: inline-block;
 }
 
 .mapWrapper { /* Width and height calculated in AngularJS via HTML */
-  background-color: red;
+  background-color: #fbfbd0;
   position: relative;
   display: inline-block;
   float: left;
+  box-sizing: border-box;
+
+  outline-style: solid;
+  outline-color: #fbfbd0;
+  -webkit-box-sizing: content-box;
+
+  -webkit-animation-name: waves;
+  -webkit-animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes waves {
+  0% {
+    outline-width: 29px;
+  }
+  35% {
+    outline-width: 0px;
+  }
+  100%{
+    outline-width: 29px;
+  }
 }
 
 .rotate { transform: rotate(45deg); }
@@ -43,22 +89,13 @@
 
 .mapRow {
   float: left;
-  padding: 0px;
-  margin: 0px;
-}
-
-.firstRow {
-
-}
-
-.firstCell { /* Applies on the first cell on each row */
-
+  line-height: 0px;
 }
 
 .mapCell {
   display: inline-block;
   float: top;
-  background-color: #88cc00;
+  background-color: #71b042;
   color: #ccff33;
   margin: 0px;
   padding: 0px;
@@ -74,9 +111,17 @@
   filter: brightness(180%);
 }
 
+.firstRow {
+  background-color: #fbfbd0;
+}
+
+.firstCell { /* Applies on the first cell on each row */
+  background-color: #fbfbd0;
+}
+
 .dark {
-  -webkit-filter: brightness(90%);
-  filter: brightness(90%);
+  -webkit-filter: brightness(92%);
+  filter: brightness(93%);
 }
 
 .hover {
@@ -86,22 +131,21 @@
 /*---------------------------------------------*/
 
 .leftSideBar {
-  height: 100%;
+  position: absolute;
+  height: calc(100vh - 30px);
   width: 200px;
-  display: none;
   float: left;
   background-color: #67674c;
 
-
   border-right-style: solid;
   border-color: #77683c;
-  border-width: 10px;
+  border-width: 5px;
 }
 
 .rightSideBar {
   height: 100%;
   width: 200px;
-  float:  right;
+  float: right;
   display: none;
 
   border-left-style: solid;
