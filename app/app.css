@@ -16,32 +16,35 @@
 
 .viewPort {
   overflow: auto;
+  float: leftba;
   display: inline-block;
   height: 100%;
   width: 100%;
-  background-color: pink;
+  background-color: #4da6ff;
 }
 
 .worldWindow {
-  
+  overflow: hidden;
+  display: inline-block;
 }
 
 .mapWrapper { /* Width and height calculated in AngularJS via HTML */
   background-color: red;
+  position: relative;
   display: inline-block;
   float: left;
-
-  text-align: left;
-  font-size: 9px;
 }
 
-.rotate { /*transform: rotate(45deg);*/ }
+.rotate { transform: rotate(45deg); }
 
-.flatten { /*transform: scale(2, 1);*/ }
+.rotateBack { transform: rotate(-45deg); }
+
+.flatten { transform: scaleY(0.5); }
 
 .mapRow {
   float: left;
-  white-space: nowrap;
+  padding: 0px;
+  margin: 0px;
 }
 
 .firstRow {
@@ -53,16 +56,12 @@
 }
 
 .mapCell {
-  height: 30px;
-  width: 30px;
   display: inline-block;
   float: top;
-
-  opacity: 0.5;
-
   background-color: #88cc00;
-
-  text-align: center;
+  color: #ccff33;
+  margin: 0px;
+  padding: 0px;
 }
 
 .mapCell:hover {
@@ -89,8 +88,10 @@
 .leftSideBar {
   height: 100%;
   width: 200px;
-  float: left;
   display: none;
+  float: left;
+  background-color: #67674c;
+
 
   border-right-style: solid;
   border-color: #77683c;

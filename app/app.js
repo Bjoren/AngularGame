@@ -14,22 +14,33 @@ angular.module('GameEngine', [])
 
 	//Map---------------------------------------------------
 
-	$scope.WORLD_MAP_SIZE = 16;
+	$scope.WORLD_MAP_SIZE = 20;
+	$scope.CELL_SIZE = 60;
 
 	$scope.worldMap = new Array($scope.WORLD_MAP_SIZE).fill().map(()=> new Array($scope.WORLD_MAP_SIZE));
 
 	$scope.determineMapPosition = function() { //Decides adjustments to div-placements based on new content dimensions after rotation
-		/*return {
-			'top' : x+'px'
-			'left' : x+'px'
-		};*/
+
+		var mapSize = $scope.WORLD_MAP_SIZE * $scope.CELL_SIZE; //Get the map size
+		var mapHypotenuse = Math.sqrt((mapSize * mapSize)*2); //Get the hypotenuse to know the width of the map rotated 45deg
+		var mapOffCenter = (mapHypotenuse - mapSize)/2; //(New size - old size) divided by half to account for offput on each side
+		
+		return mapOffCenter;
 	}
 
-	$scope.determineMapSize = function() { //30px = map cell dimensions
+	$scope.getMapSize = function() {
+		var mapSize = $scope.WORLD_MAP_SIZE * $scope.CELL_SIZE; //Get the map size
+		return mapSize;
+	}
+
+	$scope.newMapSizeToJSON = function() { //30px = map cell dimensions
+		var mapSize = $scope.getMapSize();
+		var mapHypotenuse = Math.sqrt((mapSize * mapSize)*2); //Get the hypotenuse to know the width of the map rotated 45deg
+
 		return {
-			'width' : $scope.WORLD_MAP_SIZE * 30+'px', 
-			'height' : $scope.WORLD_MAP_SIZE * 30+'px'
-		}
+			'width' : mapHypotenuse+'px', 
+			'height' : mapHypotenuse/2+'px' //Divided by two to account for flattening
+		};
 	}
 
 	//Build-------------------------------------------------

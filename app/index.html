@@ -33,11 +33,13 @@
     </div>
 
     <div class="viewPort">
-      <div class="worldWindow flatten">
-        <div class="mapWrapper rotate" ng-style="determineMapSize()"> 
-          <div class="mapRow" ng-class="{'firstRow' : $first}" ng-repeat="row in worldMap track by $index" ng-init="x_pos = $index">
-            <div class="mapCell" ng-mouseenter="hover = true" ng-click="cellClick(x_pos, y_pos)" ng-class="{'firstCell' : $first, 'dark': (x_pos + y_pos) % 2}" ng-mouseleave="hover = false" ng-repeat="cell in row track by $index" ng-init="y_pos = $index">
-              ({{x_pos}},{{y_pos}})
+      <div class="worldWindow" ng-style="newMapSizeToJSON()">
+        <div class="flatten">
+          <div class="mapWrapper rotate" ng-style="{'height' : getMapSize()+'px','width' : getMapSize()+'px', 'top' : determineMapPosition()+'px', 'left' : determineMapPosition()+'px'}"> 
+            <div class="mapRow" ng-class="{'firstRow' : $first}" ng-repeat="row in worldMap track by $index" ng-init="x_pos = $index">
+              <div class="mapCell" ng-style="{'height' : CELL_SIZE+'px', 'width' : CELL_SIZE+'px'}" ng-mouseenter="hover = true" ng-click="cellClick(x_pos, y_pos)" ng-class="{'firstCell' : $first, 'dark': (x_pos + y_pos) % 2}" ng-mouseleave="hover = false" ng-repeat="cell in row track by $index" ng-init="y_pos = $index">
+                <p class="rotateBack">({{x_pos}},{{y_pos}})</p>
+              </div>
             </div>
           </div>
         </div>
