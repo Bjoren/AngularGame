@@ -1,6 +1,6 @@
 /* app css stylesheet */
 
-.gameContainer {
+.guiContainer {
   height: calc(100vh - 40px);
   width: calc(100vw - 40px);
   background-color: #aa9555;
@@ -12,51 +12,44 @@
   overflow: hidden;
 }
 
-.gameWindow {
-  background-color: #111a00;
-  float: right;
+/*View Port---------------------------------------*/
 
-  height: 100%;
-  width: calc(100% - 420px);
-
+.viewPort {
   overflow: auto;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background-color: pink;
 }
 
-.mapWrapper {
-  background-color: red;
-  white-space: nowrap;
-  position: relative;
-  display: inline-block;
-  margin-top: 30%;
-  margin-left: 100%;
-  overflow: visible;
+.worldWindow {
+  
+}
 
-  height: 10px;
-  width: 10px;
-  /*border-top-style: solid;
-  border-left-style: solid;
-  border-width: 1px;*/
+.mapWrapper { /* Width and height calculated in AngularJS via HTML */
+  background-color: red;
+  display: inline-block;
+  float: left;
 
   text-align: left;
   font-size: 9px;
 }
 
-.rotate { transform: rotate(45deg); }
+.rotate { /*transform: rotate(45deg);*/ }
 
-.flatten { transform: scale(2, 1); }
+.flatten { /*transform: scale(2, 1);*/ }
 
 .mapRow {
   float: left;
   white-space: nowrap;
-  border-width: 1px;
 }
 
 .firstRow {
-  border-top-style: solid;
+
 }
 
-.firstCell {
-  border-left-style: solid;
+.firstCell { /* Applies on the first cell on each row */
+
 }
 
 .mapCell {
@@ -65,26 +58,39 @@
   display: inline-block;
   float: top;
 
-  border-right-style: solid;
-  border-bottom-style: solid;
-  border-width: 1px;
+  opacity: 0.5;
+
   background-color: #88cc00;
 
   text-align: center;
 }
 
-.grass {
-  background-color: #77b300;
+.mapCell:hover {
+  -webkit-filter: brightness(130%);
+  filter: brightness(130%);
+}
+
+.mapCell:active {
+  -webkit-filter: brightness(180%);
+  filter: brightness(180%);
+}
+
+.dark {
+  -webkit-filter: brightness(90%);
+  filter: brightness(90%);
 }
 
 .hover {
   background-color: #66ffff;
 }
 
+/*---------------------------------------------*/
+
 .leftSideBar {
   height: 100%;
   width: 200px;
-  position: static;
+  float: left;
+  display: none;
 
   border-right-style: solid;
   border-color: #77683c;
@@ -95,6 +101,7 @@
   height: 100%;
   width: 200px;
   float:  right;
+  display: none;
 
   border-left-style: solid;
   border-color: #77683c;

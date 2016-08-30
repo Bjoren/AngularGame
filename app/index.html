@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <div class="gameContainer" ng-controller="GameCtrl">
+  <div class="guiContainer" ng-controller="GameCtrl">
 
     <div class="rightSideBar">
       <h3>Log</h3>
@@ -26,22 +26,22 @@
         </p>
       </div>
     </div>
+    
+    <div class="leftSideBar">
+      Left sidebar - {{selectedBuilding}}
+      <p ng-click="selectedBuilding = 'house'">House</p>
+    </div>
 
-    <div class="gameWindow">
-      <div class="flatten">
-        <div class="mapWrapper rotate">
+    <div class="viewPort">
+      <div class="worldWindow flatten">
+        <div class="mapWrapper rotate" ng-style="determineMapSize()"> 
           <div class="mapRow" ng-class="{'firstRow' : $first}" ng-repeat="row in worldMap track by $index" ng-init="x_pos = $index">
-            <div class="mapCell" ng-mouseenter="hover = true" ng-click="cellClick(x_pos, y_pos)" ng-class="{'hover' : hover, 'firstCell' : $first, 'grass': (x_pos + y_pos) % 2}" ng-mouseleave="hover = false" ng-repeat="cell in row track by $index" ng-init="y_pos = $index">
+            <div class="mapCell" ng-mouseenter="hover = true" ng-click="cellClick(x_pos, y_pos)" ng-class="{'firstCell' : $first, 'dark': (x_pos + y_pos) % 2}" ng-mouseleave="hover = false" ng-repeat="cell in row track by $index" ng-init="y_pos = $index">
               ({{x_pos}},{{y_pos}})
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="leftSideBar">
-      Left sidebar - {{selectedBuilding}}
-      <p ng-click="selectedBuilding = 'house'">House</p>
     </div>
   </div>
 

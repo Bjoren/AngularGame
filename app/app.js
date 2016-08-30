@@ -14,9 +14,23 @@ angular.module('GameEngine', [])
 
 	//Map---------------------------------------------------
 
-	$scope.WORLD_MAP_SIZE = 24;
+	$scope.WORLD_MAP_SIZE = 16;
 
 	$scope.worldMap = new Array($scope.WORLD_MAP_SIZE).fill().map(()=> new Array($scope.WORLD_MAP_SIZE));
+
+	$scope.determineMapPosition = function() { //Decides adjustments to div-placements based on new content dimensions after rotation
+		/*return {
+			'top' : x+'px'
+			'left' : x+'px'
+		};*/
+	}
+
+	$scope.determineMapSize = function() { //30px = map cell dimensions
+		return {
+			'width' : $scope.WORLD_MAP_SIZE * 30+'px', 
+			'height' : $scope.WORLD_MAP_SIZE * 30+'px'
+		}
+	}
 
 	//Build-------------------------------------------------
 
