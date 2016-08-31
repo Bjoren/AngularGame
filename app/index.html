@@ -15,24 +15,12 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
-<body>
+<body key-listener keypress-events key-listener>
   <div class="guiContainer" ng-controller="GameCtrl">
-    <!--<div class="leftSideBar">
-      Left sidebar - {{selectedBuilding}}
-      <p ng-click="selectedBuilding = 'house'">House</p>
-    </div>-->
-
-    <div class="viewPort" newMapSizeToJSON()>
-      <div class="overlayButton" ng-click="CELL_SIZE = CELL_SIZE + 10">
-        <label>+</label>
-      </div>
-      <div class="overlayButton" style="top: 45px" ng-click="CELL_SIZE = CELL_SIZE - 10">
-        <label>-</label>
-      </div>
-
+    <div class="viewPort">
       <div class="worldWindow" ng-style="newMapSizeToJSON()">
         <div class="flatten">
-          <div class="mapWrapper rotate" ng-style="{'height' : getMapSize()+'px','width' : getMapSize()+'px', 'top' : determineMapPosition()+'px', 'left' : determineMapPosition()+'px'}"> 
+          <div class="mapWrapper rotate" ng-style="{'height' : getMapSize()+'px', 'width' : getMapSize()+'px', 'top' : determineMapPosition()+'px', 'left' : determineMapPosition()+'px', 'border-width' : CELL_SIZE/6+'px', 'outline-width' : CELL_SIZE/2+'px'}"> 
             <div class="mapRow" ng-repeat="row in worldMap track by $index" ng-init="x_pos = $index; borderCell = ($first || $last)">
               <div class="mapCell" ng-style="{'height' : CELL_SIZE+'px', 'width' : CELL_SIZE+'px'}" ng-mouseenter="hover = true" ng-click="cellClick(x_pos, y_pos)" ng-class="{'firstCell' : ($first || $last || borderCell), 'dark': (x_pos + y_pos) % 2}" ng-mouseleave="hover = false" ng-repeat="cell in row track by $index" ng-init="y_pos = $index">
                 <p class="rotateBack" ng-hide="true">({{x_pos}},{{y_pos}})</p>
@@ -44,14 +32,20 @@
       </div>
     </div>
 
-    <!--<div class="rightSideBar">
-      <h3>Log</h3>
-      <div class="logContainer" id="logContainer">
-        <p class="logText" ng-class="entry.type" ng-class="expression" ng-repeat="entry in getLog() track by $index">
-          &nbsp- {{entry.message}}
-        </p>
+    <!--GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+    <div class="overlayContainer">
+      <div class="overlay">
+        <div class="glassPanel">
+        </div>
       </div>
-    </div>-->
+      <div class="overlayBottom">
+        <div class="panelCollapseIcon">
+          &#8595;
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script src="bower_components/angular/angular.js"></script>

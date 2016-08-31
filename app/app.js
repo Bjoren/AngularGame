@@ -2,7 +2,7 @@
 
 angular.module('GameEngine', [])
 
-.controller('GameCtrl', ['$scope', 'logService', function ($scope, logService) {
+.controller('GameCtrl', ['$scope', 'logService', 'cameraService', function ($scope, logService, cameraService) {
 
 	$scope.getLog = function() {
 		return logService.getLog();
@@ -14,8 +14,10 @@ angular.module('GameEngine', [])
 
 	//Map---------------------------------------------------
 
-	$scope.WORLD_MAP_SIZE = 20;
+	$scope.WORLD_MAP_SIZE = 30;
 	$scope.CELL_SIZE = 60;
+
+	$scope.cameraPosition = {x:0,y:0}
 
 	$scope.worldMap = new Array($scope.WORLD_MAP_SIZE).fill().map(()=> new Array($scope.WORLD_MAP_SIZE));
 
@@ -38,9 +40,15 @@ angular.module('GameEngine', [])
 		var mapHypotenuse = Math.sqrt((mapSize * mapSize)*2); //Get the hypotenuse to know the width of the map rotated 45deg
 
 		return {
-			'width' : mapHypotenuse+'px', 
-			'height' : mapHypotenuse/2+'px' //Divided by two to account for flattening
+			'width' : mapHypotenuse + 'px', 
+			'height' : mapHypotenuse/2 + 'px', //Divided by two to account for flattening
+			'left' : cameraService.cameraPos().xPos + 'px',
+			'top' : cameraService.cameraPos().yPos + 'px'
 		};
+	}
+
+	$scope.keyListener = function(event) {
+		console.log(event);
 	}
 
 	//Build-------------------------------------------------
@@ -75,4 +83,53 @@ angular.module('GameEngine', [])
 		var element = document.getElementById("logContainer");
 		element.scrollTop = element.scrollHeight;
 	}
-}]);
+}])
+
+.service('cameraService', [function () {
+	this.currentCameraPos =  { xPos:0 , yPos:0 };
+
+	this.resetCameraPos = function(){
+		this.currentCameraPos =  { xPos:0 , yPos:0 };
+	}
+
+	this.cameraPos = function(newCameraPos) {
+
+		if(newCameraPos != undefined) {
+			this.currentCameraPos.xPos += newCameraPos.x;
+			this.currentCameraPos.yPos += newCameraPos.y;
+		}
+
+		return this.currentCameraPos;
+	}
+}])
+
+.directive('keypressEvents', 
+	['$document', '$rootScope', 'cameraService',
+ 	function($document, $rootScope, cameraService) {
+    return {
+      restrict: 'A',
+      link: function() {
+        $document.bind('keypress', function(e) {
+          console.log('Got keypress:', e.which);
+          if (e.which === 119) {
+          	cameraService.cameraPos({x:0,y:10});
+          }
+          else if (e.which === 97) {
+          	cameraService.cameraPos({x:10,y:0});
+          }
+          else if (e.which === 115) {
+          	cameraService.cameraPos({x:0,y:-10});
+          }
+          else if (e.which === 100) {
+          	cameraService.cameraPos({x:-10,y:0});
+          }
+          else if (e.which === 32) {
+          	cameraService.resetCameraPos();
+          }
+
+          $rootScope.$apply();
+        });
+      }
+    };
+  }
+]);
