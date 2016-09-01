@@ -4,8 +4,8 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-color: black;
   overflow: hidden;
+  background-color: black;
 }
 
 /*View Port---------------------------------------*/
@@ -85,6 +85,10 @@
   line-height: 0px;
 }
 
+.firstRow {
+  background-color: #fbfbd0;
+}
+
 .mapCell {
   display: inline-block;
   float: top;
@@ -92,20 +96,12 @@
   color: #ccff33;
   margin: 0px;
   padding: 0px;
-}
-
-.mapCell:hover {
+}.mapCell:hover {
   -webkit-filter: brightness(130%);
   filter: brightness(130%);
-}
-
-.mapCell:active {
+}.mapCell:active {
   -webkit-filter: brightness(180%);
   filter: brightness(180%);
-}
-
-.firstRow {
-  background-color: #fbfbd0;
 }
 
 .firstCell { /* Applies on the first cell on each row */
@@ -113,12 +109,8 @@
 }
 
 .dark {
-  -webkit-filter: brightness(92%);
+  -webkit-filter: brightness(93%);
   filter: brightness(93%);
-}
-
-.hover {
-  background-color: #66ffff;
 }
 
 /* GUI ---------------------------------------------*/
@@ -126,70 +118,107 @@
 .overlayContainer {
   position: absolute;
   width: 120px;
-  top: -100vh; /*Set to minus 180 to collapse*/
+  top: calc(35px - 100vh); /*Set to minus 180 to collapse*/
   left: 0px;
-  z-index: 1;
-  /*animation: drop-down 0.3s ease-out 1s 2 alternate;*/
-  /*animation: drop-down 0.3s ease-out 0s 1 normal;*/
-  transition:  all 0.5s 0.1s ease-in-out;
-  transition-property: top, opacity;
-  /*transition: opacity 2.1s ease-in-out;*/
-  opacity: 0.3;
-}
 
-.overlayContainer:hover {
-  transition: all 0.2s ease-in-out;
-  /*transition: opacity 2.1s ease-in-out;*/
+  opacity: 0.3;
+
+  transition:  top 0.5s 0.3s ease-in-out, opacity 0.8s 0.6s ease-in-out;
+}.overlayContainer:hover {
   top : 0px;
   opacity: 1;
-}
 
-@-webkit-keyframes drop-down {
-  100% {
-    top: 0px;
-  }
+  transition: top 0.2s 0.2s ease-in-out, opacity 0.2s 0s ease-in-out;
 }
 
 .overlay {
   width: 100%;
-  height: 100vh;
-  position: inherit;
+  height: calc(100vh - 35px);
   border-right-style: solid;
   border-color: white;
-  border-width: 4px;
+  border-width: 2px;
   box-sizing: border-box;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.7);
+  
+}
+
+.overlayContent {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  padding: 10px;
+  padding-bottom: 20px;
+
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .overlayBottom {
-  position: absolute;
   width: 100%;
   height: 35px;
-  top: 100vh;
   border-radius: 0px 0px 30px 0px;
   background-color: white;
   color: black;
   text-align: center;
+  position: inherit;
+}
+
+.newNotice {
+  animation: newNotice 0.7s ease-out 0s infinite alternate;
+}
+
+@-webkit-keyframes newNotice {
+  100% {
+    opacity: 0.7;
+    /*box-shadow: 0px 0px 5px 10px #ffffcc;*/
+  }
 }
 
 .glassPanel {
-  background-color: rgba(125, 200, 255, 0.3);
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 6px); /*-6px for scroll-bar*/
   box-shadow: -5px -5px 20px 10px rgba(255, 255, 255, 1) inset;
   color: black;
-  font-size: 2;
 }
 
 .panelCollapseIcon {
-  font-size: 16px;
-  bottom: 0px;
   position: absolute;
+  bottom: 10px;
+  width: 120px;
+  
+  font-size: 16px;
   color: black;
   text-align: center;
-  bottom: 10px;
-  
-  width: 120px;
   margin-left: auto;
   margin-right: auto;
+}
+
+
+::-webkit-scrollbar {
+    background-color: white;
+    width: 6px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #e6e6e6;
+    border-radius: 0px 0px 7px 0px;
+}
+
+::-webkit-scrollbar-track-piece:end   {
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 5px;
+  background-color: #e6e6e6;
+  border-radius: 0px 0px 7px 0px;
 }
