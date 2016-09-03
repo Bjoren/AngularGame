@@ -2,7 +2,7 @@
 
 angular.module('GameEngine', [])
 
-.controller('GameCtrl', ['$scope', 'logService', 'cameraService', function ($scope, logService, cameraService) {
+.controller('GameCtrl', ['$scope', 'logService', 'cameraService', 'buildingService', function ($scope, logService, cameraService, buildingService) {
 
 	$scope.getLog = function() {
 		return logService.getLog();
@@ -14,7 +14,7 @@ angular.module('GameEngine', [])
 
 	//Map---------------------------------------------------
 
-	$scope.WORLD_MAP_SIZE = 30;
+	$scope.WORLD_MAP_SIZE = 10;
 	$scope.CELL_SIZE = 60;
 
 	$scope.cameraPosition = {x:0,y:0}
@@ -47,17 +47,30 @@ angular.module('GameEngine', [])
 		};
 	}
 
-	$scope.keyListener = function(event) {
-		console.log(event);
-	}
-
 	//Build-------------------------------------------------
 
-	$scope.selectedBuilding = undefined;
+	$scope.selectedBuilding = 'test';
+
+	$scope.setSelectedBuilding = function(name) {
+		$scope.selectedBuilding = name;
+	}
 
 	$scope.cellClick = function(x, y) {
-		console.log(x + ', ' + y);
+		if ($scope.selectedBuilding) {
+			$scope.worldMap[x][y] = buildingService.getBuilding($scope.selectedBuilding);
+			console.log($scope.worldMap[x][y])
+		}
+
+		//console.log(x + ', ' + y);
 		$scope.addEntry(x + ', ' + y + ' clicked.', '');
+	}
+
+	$scope.getBuildings = function() {
+		return buildingService.getBuildings();
+	}
+
+	$scope.getBuilding = function(buildingName) {
+		return buildingService.getBuilding(buildingName); 
 	}
 }])
 
@@ -100,6 +113,30 @@ angular.module('GameEngine', [])
 		}
 
 		return this.currentCameraPos;
+	}
+}])
+
+.service('buildingService', [function () {
+	this.buildings = {
+		house: {
+			title: 'house',
+			spritePath: 'house_placeholder'
+		},
+
+		fishingHut: {
+			title: 'Fishing hut',
+			spritePath: ''
+		}
+	}
+
+	this.getBuilding = function(buildingName) {
+		if(this.buildings[buildingName]) {
+			return this.buildings[buildingName]
+		}
+	}
+
+	this.getBuildings = function() {
+		return this.buildings;
 	}
 }])
 
