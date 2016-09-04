@@ -17,14 +17,14 @@
 
 <body key-listener keypress-events key-listener>
   <div class="guiContainer" ng-controller="GameCtrl">
-    <div class="viewPort">
+    <div class="viewPort" ng-click="selectedBuilding = ''">
       <div class="worldWindow" ng-style="newMapSizeToJSON()">
         <div class="flatten">
           <div class="mapWrapper rotate" ng-style="{'height' : getMapSize()+'px', 'width' : getMapSize()+'px', 'top' : determineMapPosition()+'px', 'left' : determineMapPosition()+'px', 'border-width' : CELL_SIZE/6+'px', 'outline-width' : CELL_SIZE/2+'px'}"> 
             <div class="mapRow" ng-repeat="row in worldMap track by $index" ng-init="x_pos = $index; borderCell = ($first || $last)">
               <div class="mapCell" ng-style="{'height' : CELL_SIZE+'px', 'width' : CELL_SIZE+'px'}" ng-mouseenter="hover = true" ng-click="cellClick(x_pos, y_pos)" ng-class="{'beachCell' : ($first || $last || borderCell), 'dark': (x_pos + y_pos) % 2}" ng-mouseleave="hover = false" ng-repeat="cell in row track by $index" ng-init="y_pos = $index">
                 <p class="rotateBack" ng-hide="true">({{x_pos}},{{y_pos}})</p>
-                <p class="rotateBack">{{cell.title}}</p>
+                <p>{{cell.title}}</p>
               </div>
             </div>
           </div>

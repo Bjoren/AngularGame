@@ -65,7 +65,7 @@
   border-width: 5px;
   -webkit-box-sizing: content-box;
 
-  animation: waves 3s ease-out 0s infinite alternate;
+  animation: waves 2.5s ease-out 0s infinite alternate;
 }
 
 @-webkit-keyframes waves {
@@ -97,6 +97,7 @@
   color: black;
   margin: 0px;
   padding: 0px;
+  font-size: 14px;
 }.mapCell:hover {
   -webkit-filter: brightness(130%);
   filter: brightness(130%);
